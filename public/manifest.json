@@ -1,0 +1,16 @@
+{
+  "name": "FORMA — Платформа дизайн-ресурсов",
+  "short_name": "FORMA",
+  "description": "Тысячи шрифтов, иконок, иллюстраций и шаблонов от профессиональных дизайнеров",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6C63FF",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
