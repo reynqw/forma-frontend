@@ -68,7 +68,7 @@ export default function Navbar() {
 
   const navLinks = useMemo(() => {
     const base = [{ label: 'Каталог', href: '/catalog' }]
-    const types = typesData?.data ?? []
+    const types = Array.isArray(typesData?.data) ? typesData.data : []
     return [...base, ...types.slice(0, 4).map((t) => ({ label: t.name, href: `/catalog?typeIds=${t.id}` }))]
   }, [typesData])
 

@@ -11,7 +11,11 @@ import './styles/index.css'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 1,
+      retry: (failureCount, error) => {
+        // Don't retry on network errors (API unavailable)
+        if ((error as { code?: string })?.code === 'ERR_NETWORK') return false
+        return failureCount < 1
+      },
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
     },
