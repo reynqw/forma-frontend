@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["forma-platform/frontend/start-vite.cjs"],
+      "port": 5174
+    }
+  ]
+}

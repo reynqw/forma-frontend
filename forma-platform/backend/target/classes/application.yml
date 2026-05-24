@@ -1,0 +1,154 @@
+spring:
+  application:
+    name: forma-backend
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/forma_db?useSSL=false&serverTimezone=Europe/Moscow&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:forma_user}
+    password: ${DB_PASSWORD:forma_pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        default_batch_fetch_size: 20
+
+  sql:
+    init:
+      mode: never
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+          min-idle: 1
+
+  mail:
+    host: ${MAIL_HOST:smtp.yandex.ru}
+    port: ${MAIL_PORT:465}
+    username: ${MAIL_USERNAME:noreply@forma-platform.ru}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+    default-encoding: UTF-8
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 200MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+  error:
+    include-message: never
+    include-stacktrace: never
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:FormaSecretKey2024VeryLongSecretKeyForHmacSha256Algorithm!}
+  access-token-expiration: 900000       # 15 минут
+  refresh-token-expiration: 604800000   # 7 дней
+  email-confirm-expiration: 86400000    # 24 часа
+  password-reset-expiration: 3600000    # 1 час
+
+# AWS S3 / MinIO Storage
+storage:
+  type: ${STORAGE_TYPE:local}           # local | s3
+  local:
+    base-path: ${STORAGE_LOCAL_PATH:./uploads}
+    base-url: ${STORAGE_LOCAL_URL:http://localhost:8080/api/files}
+  s3:
+    endpoint: ${S3_ENDPOINT:http://localhost:9000}
+    access-key: ${S3_ACCESS_KEY:minioadmin}
+    secret-key: ${S3_SECRET_KEY:minioadmin}
+    bucket: ${S3_BUCKET:forma-files}
+    region: ${S3_REGION:us-east-1}
+
+# Robokassa Payment
+robokassa:
+  merchant-login: ${ROBOKASSA_LOGIN:demo}
+  password1: ${ROBOKASSA_PASSWORD1:demo_pass1}
+  password2: ${ROBOKASSA_PASSWORD2:demo_pass2}
+  test-mode: ${ROBOKASSA_TEST_MODE:true}
+  payment-url: https://auth.robokassa.ru/Merchant/Index.aspx
+  result-url: ${APP_URL:http://localhost:8080}/api/payments/robokassa/callback
+
+# Application settings
+app:
+  base-url: ${APP_URL:http://localhost:8080}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  # Комиссия платформы (30%)
+  platform-commission: 0.30
+  # Минимальная сумма вывода
+  min-withdrawal-amount: 500.00
+  # Максимальное количество неудачных попыток входа
+  max-login-attempts: 5
+  # Время блокировки после превышения попыток (минуты)
+  login-lockout-minutes: 15
+  # SHA-256 хеши известных бесплатных ресурсов (для проверки уникальности)
+  free-resource-hashes-db-url: ${FREE_HASHES_DB_URL:}
+
+# AI Configuration
+ai:
+  ollama:
+    base-url: ${OLLAMA_URL:http://localhost:11434}
+    model: ${OLLAMA_MODEL:qwen2.5:7b}
+    timeout: 120000
+  huggingface:
+    api-token: ${HF_API_TOKEN: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}
+    model: black-forest-labs/FLUX.1-schnell
+    base-url: https://router.huggingface.co/hf-inference/models
+  # Требования для доступа к AI Studio
+  access:
+    min-published-resources: 5
+    min-sales: 10
+    min-days-on-platform: 90
+
+# Logging
+logging:
+  level:
+    com.forma: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/forma-backend.log
+    max-size: 10MB
+    max-history: 30
+
+# SpringDoc OpenAPI
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  default-produces-media-type: application/json

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#f0fdf4" rx="12"/>
+  
+      <!-- Growth chart -->
+      <rect x="200" y="100" width="200" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+      <polyline points="220,250 260,220 300,200 340,170 380,140" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="260" cy="220" r="4" fill="#10b981"/><circle cx="300" cy="200" r="4" fill="#10b981"/>
+      <circle cx="340" cy="170" r="4" fill="#10b981"/><circle cx="380" cy="140" r="4" fill="#10b981"/>
+      <!-- Person 1 -->
+      <circle cx="140" cy="250" r="22" fill="#6366f1"/><rect x="118" y="275" width="44" height="50" rx="8" fill="#818cf8"/>
+      <!-- Person 2 -->
+      <circle cx="300" cy="310" r="22" fill="#f59e0b"/><rect x="278" y="335" width="44" height="40" rx="8" fill="#fbbf24"/>
+      <!-- Person 3 -->
+      <circle cx="460" cy="250" r="22" fill="#ec4899"/><rect x="438" y="275" width="44" height="50" rx="8" fill="#f472b6"/>
+      <!-- Decorative -->
+      <circle cx="500" cy="80" r="30" fill="#bbf7d0" opacity="0.5"/>
+      <rect x="80" y="150" width="40" height="40" rx="8" fill="#c7d2fe" opacity="0.4"/>
+    
+</svg>

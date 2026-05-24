@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" rx="24" fill="url(#bg)"/>
+  <!-- Decorative circles -->
+  <circle cx="650" cy="100" r="120" fill="white" opacity="0.07"/>
+  <circle cx="700" cy="450" r="80" fill="white" opacity="0.05"/>
+  <circle cx="100" cy="500" r="60" fill="white" opacity="0.05"/>
+  <!-- Icon area -->
+  <g transform="translate(400,240)"><g transform="translate(-125,-30)" style="color:white"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="12,5 19,12 12,19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(-75,-30)" style="color:white"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="12,19 5,12 12,5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(-25,-30)" style="color:white"><polyline points="6,9 12,15 18,9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(25,-30)" style="color:white"><polyline points="18,15 12,9 6,15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(75,-30)" style="color:white"><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+<g transform="translate(125,-30)" style="color:white"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g></g>
+  <!-- Title -->
+  <text x="400" y="430" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="white">Arrows & Navigation</text>
+  <text x="400" y="465" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="white" opacity="0.8">12 иконок / SVG / Навигация</text>
+  <!-- Badge -->
+  <rect x="580" y="20" width="200" height="36" rx="18" fill="#10b981"/>
+       <text x="680" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="white">FREE</text>
+  <!-- FORMA watermark -->
+  <text x="400" y="560" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="white" opacity="0.4">FORMA Platform</text>
+</svg>

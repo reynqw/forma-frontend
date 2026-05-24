@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Presentation</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;overflow:hidden;height:100vh}
+.slide{width:100vw;height:100vh;display:none;align-items:center;justify-content:center;flex-direction:column;padding:60px;text-align:center}
+.slide.active{display:flex}.slide h1{font-size:3.5rem;margin-bottom:16px}.slide p{font-size:1.3rem;opacity:.8;max-width:700px}
+.s1{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff}
+.s2{background:#f8fafc;color:#1e293b}.s3{background:linear-gradient(135deg,#0ea5e9,#06b6d4);color:#fff}
+.s4{background:#1e293b;color:#fff}.s5{background:linear-gradient(135deg,#ec4899,#f43f5e);color:#fff}
+nav{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+nav button{width:12px;height:12px;border-radius:50%;border:2px solid rgba(99,102,241,.5);background:transparent;cursor:pointer}
+nav button.active{background:#6366f1;border-color:#6366f1}</style></head>
+<body><div class="slide s1 active"><h1>Your Startup</h1><p>One-line pitch that captures your vision</p></div>
+<div class="slide s2"><h1>Problem</h1><p>Define the problem you're solving</p></div>
+<div class="slide s3"><h1>Solution</h1><p>How your product solves it</p></div>
+<div class="slide s4"><h1>Traction</h1><p>1,000+ users in first month</p></div>
+<div class="slide s5"><h1>Join Us</h1><p>contact@startup.com</p></div>
+<nav></nav>
+<script>const slides=document.querySelectorAll('.slide'),nav=document.querySelector('nav');let cur=0;
+slides.forEach((_,i)=>{const b=document.createElement('button');if(i===0)b.classList.add('active');b.onclick=()=>go(i);nav.appendChild(b)});
+function go(i){slides[cur].classList.remove('active');nav.children[cur].classList.remove('active');cur=i;slides[cur].classList.add('active');nav.children[cur].classList.add('active')}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<slides.length-1)go(cur+1);if(e.key==='ArrowLeft'&&cur>0)go(cur-1)})</script></body></html>

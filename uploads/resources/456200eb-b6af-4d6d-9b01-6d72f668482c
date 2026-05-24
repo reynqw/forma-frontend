@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Resume</title>
+<style>@page{size:A4;margin:0}*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;color:#1e293b;max-width:800px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.sidebar{background:#1e293b;color:#fff;padding:40px 24px}.sidebar h1{font-size:1.8rem;margin-bottom:4px}
+.sidebar .title{opacity:.7;margin-bottom:32px;font-size:.95rem}.sidebar h3{font-size:.85rem;text-transform:uppercase;letter-spacing:1px;opacity:.5;margin-bottom:12px;margin-top:24px}
+.sidebar p,.sidebar li{font-size:.9rem;line-height:1.7;opacity:.85}
+.sidebar ul{list-style:none}.sidebar li::before{content:"—  ";opacity:.4}
+.skill{display:flex;align-items:center;gap:8px;margin-bottom:8px}.skill span{font-size:.85rem;flex:1}
+.bar{height:6px;background:rgba(255,255,255,.2);border-radius:3px;flex:2}.bar div{height:100%;background:#6366f1;border-radius:3px}
+main{padding:40px 32px}main h2{font-size:1.1rem;color:#6366f1;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.entry{margin-bottom:20px}.entry h3{font-size:1rem;margin-bottom:2px}.entry .meta{font-size:.85rem;color:#64748b;margin-bottom:6px}
+.entry p{font-size:.9rem;line-height:1.6;color:#475569}
+main h2+.entry{margin-top:0}section+section{margin-top:28px}</style></head>
+<body><aside class="sidebar"><h1>Ivan Petrov</h1><div class="title">Frontend Developer</div>
+<h3>Contact</h3><p>ivan@email.com<br>+7 (999) 123-4567<br>Moscow, Russia</p>
+<h3>Skills</h3><div class="skill"><span>React</span><div class="bar"><div style="width:90%"></div></div></div>
+<div class="skill"><span>TypeScript</span><div class="bar"><div style="width:85%"></div></div></div>
+<div class="skill"><span>CSS</span><div class="bar"><div style="width:95%"></div></div></div>
+<div class="skill"><span>Node.js</span><div class="bar"><div style="width:70%"></div></div></div>
+<h3>Languages</h3><ul><li>Russian (Native)</li><li>English (B2)</li></ul></aside>
+<main><section><h2>Experience</h2>
+<div class="entry"><h3>Senior Frontend Developer</h3><div class="meta">Tech Corp &bull; 2022 — Present</div><p>Led UI development for the main product. Improved performance by 40%.</p></div>
+<div class="entry"><h3>Frontend Developer</h3><div class="meta">StartupXYZ &bull; 2020 — 2022</div><p>Built React components, integrated REST APIs, mentored juniors.</p></div></section>
+<section><h2>Education</h2>
+<div class="entry"><h3>B.Sc. Computer Science</h3><div class="meta">Moscow State University &bull; 2016 — 2020</div></div></section></main></body></html>

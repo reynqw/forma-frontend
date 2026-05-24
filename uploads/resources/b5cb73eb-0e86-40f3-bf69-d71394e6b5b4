@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#fdf4ff" rx="12"/>
+  
+      <!-- Palette -->
+      <circle cx="300" cy="180" r="100" fill="#f0abfc" opacity="0.3"/>
+      <circle cx="260" cy="150" r="20" fill="#ec4899"/><circle cx="310" cy="130" r="20" fill="#8b5cf6"/>
+      <circle cx="350" cy="160" r="20" fill="#3b82f6"/><circle cx="340" cy="210" r="20" fill="#10b981"/>
+      <circle cx="280" cy="220" r="20" fill="#f59e0b"/><circle cx="240" cy="190" r="20" fill="#ef4444"/>
+      <!-- Brush -->
+      <rect x="380" y="100" width="12" height="80" rx="4" fill="#a78bfa" transform="rotate(30,386,140)"/>
+      <rect x="376" y="95" width="20" height="20" rx="6" fill="#7c3aed" transform="rotate(30,386,105)"/>
+      <!-- Stars -->
+      <polygon points="120,100 123,110 133,110 125,116 128,126 120,120 112,126 115,116 107,110 117,110" fill="#fbbf24"/>
+      <polygon points="480,80 482,86 488,86 483,90 485,96 480,92 475,96 477,90 472,86 478,86" fill="#fbbf24"/>
+      <!-- Geometric shapes -->
+      <rect x="100" y="250" width="50" height="50" rx="4" fill="#c084fc" opacity="0.4" transform="rotate(15,125,275)"/>
+      <circle cx="480" cy="280" r="30" fill="#93c5fd" opacity="0.4"/>
+      <polygon points="450,330 470,370 430,370" fill="#a78bfa" opacity="0.4"/>
+      <!-- Abstract lines -->
+      <path d="M80 320 Q200 280 300 340 T520 300" stroke="#d946ef" stroke-width="3" fill="none" opacity="0.3"/>
+    
+</svg>

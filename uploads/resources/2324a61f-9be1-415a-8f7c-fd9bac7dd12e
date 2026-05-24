@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Landing Template</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;color:#1e293b}
+.hero{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:80px 20px;text-align:center}
+.hero h1{font-size:3rem;margin-bottom:16px}.hero p{font-size:1.2rem;opacity:.8;max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;padding:14px 32px;background:#fff;color:#6366f1;border-radius:8px;font-weight:700;text-decoration:none}
+.features{max-width:1000px;margin:60px auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature{padding:24px;border-radius:12px;border:1px solid #e2e8f0}.feature h3{margin-bottom:8px}
+.cta{background:#f8fafc;padding:60px 20px;text-align:center}.cta h2{font-size:2rem;margin-bottom:12px}
+footer{padding:32px 20px;text-align:center;color:#64748b;font-size:.9rem}</style></head>
+<body><section class="hero"><h1>Your Product Name</h1><p>Modern landing page template built with clean HTML and CSS.</p><a href="#" class="btn">Get Started</a></section>
+<section class="features"><div class="feature"><h3>Fast</h3><p>Lightning-fast loading times with optimized code.</p></div>
+<div class="feature"><h3>Responsive</h3><p>Works perfectly on all screen sizes.</p></div>
+<div class="feature"><h3>Modern</h3><p>Clean, modern design following latest trends.</p></div></section>
+<section class="cta"><h2>Ready to start?</h2><p>Join thousands of happy customers today.</p></section>
+<footer>&copy; 2025 FORMA Template</footer></body></html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#f0f9ff" rx="12"/>
+  
+      <!-- Central chip -->
+      <rect x="230" y="130" width="140" height="140" rx="12" fill="#0ea5e9"/>
+      <rect x="245" y="145" width="110" height="110" rx="6" fill="#0c4a6e"/>
+      <!-- Circuit lines -->
+      <line x1="300" y1="130" x2="300" y2="80" stroke="#0ea5e9" stroke-width="2"/><circle cx="300" cy="75" r="5" fill="#0ea5e9"/>
+      <line x1="300" y1="270" x2="300" y2="320" stroke="#0ea5e9" stroke-width="2"/><circle cx="300" cy="325" r="5" fill="#0ea5e9"/>
+      <line x1="230" y1="200" x2="180" y2="200" stroke="#0ea5e9" stroke-width="2"/><circle cx="175" cy="200" r="5" fill="#0ea5e9"/>
+      <line x1="370" y1="200" x2="420" y2="200" stroke="#0ea5e9" stroke-width="2"/><circle cx="425" cy="200" r="5" fill="#0ea5e9"/>
+      <!-- Inner chip detail -->
+      <rect x="270" y="170" width="60" height="60" rx="4" fill="#38bdf8" opacity="0.3"/>
+      <text x="300" y="208" text-anchor="middle" font-family="monospace" font-size="18" fill="#7dd3fc">AI</text>
+      <!-- Floating elements -->
+      <circle cx="130" cy="100" r="25" fill="#bae6fd" opacity="0.4"/>
+      <circle cx="470" cy="300" r="20" fill="#bae6fd" opacity="0.4"/>
+      <rect x="450" y="80" width="40" height="40" rx="8" fill="#7dd3fc" opacity="0.3"/>
+      <!-- Connection lines -->
+      <line x1="175" y1="200" x2="130" y2="130" stroke="#bae6fd" stroke-width="1" stroke-dasharray="4"/>
+      <line x1="425" y1="200" x2="470" y2="300" stroke="#bae6fd" stroke-width="1" stroke-dasharray="4"/>
+    
+</svg>

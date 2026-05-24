@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface-100 text-text-primary font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-primary-500/20;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-200;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-400 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
+}
+
+@layer components {
+  /* ─── Page transitions ─── */
+  .page-transition {
+    transition: opacity 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+  }
+  .page-enter {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .page-exit {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  /* ─── Buttons (border-radius: 8px per Figma) ─── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           bg-primary-500 hover:bg-primary-600 active:bg-primary-700
+           text-white font-semibold rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2
+           focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 76, 230, 0.3);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           border-2 border-primary-500 text-primary-500 hover:bg-primary-500
+           hover:text-white font-semibold rounded-lg
+           focus:outline-none focus:ring-2
+           focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-white;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-outline:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 76, 230, 0.2);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2
+           text-text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-lg;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ─── Card (Figma: white, 16px radius, soft shadow) ─── */
+  .card {
+    @apply bg-white rounded-2xl shadow-card overflow-hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ─── Input (Figma: 12px radius, #E5E5E5 border) ─── */
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-surface-300
+           rounded-xl text-text-primary placeholder-text-muted
+           focus:outline-none focus:border-primary-500 focus:ring-1
+           focus:ring-primary-500;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .input:focus {
+    box-shadow: 0 0 0 3px rgba(107, 76, 230, 0.1);
+  }
+
+  .label {
+    @apply block text-sm font-medium text-text-primary mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full
+           text-xs font-medium;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full
+           text-xs font-medium bg-surface-200 text-text-secondary
+           hover:bg-primary-50 hover:text-primary-500
+           cursor-pointer;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .tag:hover {
+    transform: translateY(-1px);
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-text-primary;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-500 to-primary-400 bg-clip-text text-transparent;
+  }
+
+  .resource-card {
+    @apply card cursor-pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ─── Dropdown menus ─── */
+  .dropdown-menu {
+    animation: dropdownIn 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: top right;
+  }
+
+  /* ─── Search bar expand ─── */
+  .search-expand {
+    animation: searchExpand 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ─── Mobile menu slide ─── */
+  .mobile-menu {
+    animation: mobileSlide 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ─── Modal backdrop + content ─── */
+  .modal-backdrop {
+    animation: backdropIn 0.25s ease-out;
+  }
+  .modal-content {
+    animation: modalIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ─── Notification badge pulse ─── */
+  .notification-badge {
+    animation: badgePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* ─── Link hover underline ─── */
+  .link-hover {
+    position: relative;
+  }
+  .link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .link-hover:hover::after {
+    width: 100%;
+  }
+
+  /* ─── Glass morphism helper ─── */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* ─── Skeleton loading shimmer ─── */
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}
+
+/* ─── Keyframes for component animations ─── */
+@keyframes dropdownIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes searchExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    max-height: 80px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mobileSlide {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 400px;
+  }
+}
+
+@keyframes backdropIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes modalIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Reduce motion for accessibility ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .page-transition {
+    transition: none !important;
+  }
+}

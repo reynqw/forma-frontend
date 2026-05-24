@@ -1,0 +1,109 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: forma-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: forma_db
+      MYSQL_USER: forma_user
+      MYSQL_PASSWORD: forma_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/src/main/resources/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: forma-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass redispassword
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "redispassword", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: forma-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: forma-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/forma_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: forma_user
+      SPRING_DATASOURCE_PASSWORD: forma_password
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_PASSWORD: redispassword
+      APP_JWT_SECRET: YourVeryLongAndSecureJwtSecretKeyForFormaProductionUseOnly2024
+      APP_JWT_ACCESS_EXPIRATION: 900000
+      APP_JWT_REFRESH_EXPIRATION: 604800000
+      APP_STORAGE_TYPE: local
+      APP_STORAGE_LOCAL_PATH: /app/uploads
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_USERNAME: ${MAIL_USERNAME:-forma@example.com}
+      SPRING_MAIL_PASSWORD: ${MAIL_PASSWORD:-changeme}
+      APP_ROBOKASSA_MERCHANT_LOGIN: ${ROBOKASSA_MERCHANT:-FormaTest}
+      APP_ROBOKASSA_PASSWORD1: ${ROBOKASSA_PASS1:-password1}
+      APP_ROBOKASSA_PASSWORD2: ${ROBOKASSA_PASS2:-password2}
+      APP_ROBOKASSA_TEST_MODE: "true"
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads_data:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: forma-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  mysql_data:
+  redis_data:
+  minio_data:
+  uploads_data:
